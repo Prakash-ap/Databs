@@ -7,6 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class DatabaseHandler extends SQLiteOpenHelper {
 
@@ -21,9 +22,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
 
 
-    public DatabaseHandler(Context context, String name, SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, name, factory, version);
+    public DatabaseHandler(Context context) {
+        super(context, DATABASE_NAME, null, DATABASEVERSION);
     }
+
+
 
     @Override
     public void onCreate(SQLiteDatabase db) {
@@ -49,14 +52,14 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         }
 
-    public void updatedata(Contact contact){
+    public int updatedata(Contact contact){
         SQLiteDatabase db=this.getWritableDatabase();
         ContentValues contentValues=new ContentValues();
         contentValues.put(NAME,contact.getName());
         contentValues.put(EMAIL,contact.getEmail());
         contentValues.put(PHONE,contact.getPhone());
-        db.update(DATABASE_TABLe,contentValues,KEY_ID +"=?",new String[]{contact.getId()});
-        db.close();
+       return db.update(DATABASE_TABLe,contentValues,KEY_ID +"=?",new String[]{contact.getId()});
+
 
     }
 
@@ -67,7 +70,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     }
 
 
-public ArrayList<Contact>getAllRecords(){
+public ArrayList<Contact> getAllRecords(){
         SQLiteDatabase db=this.getReadableDatabase();
         Cursor cursor=db.rawQuery(" SELECT * FROM "+ DATABASE_TABLe,null);
         ArrayList<Contact>contacts=new ArrayList<Contact>();

@@ -2,6 +2,9 @@ package techy.ap.datab;
 
 public class Contact {
     private String  id;
+    private String name;
+    private String email;
+    private String phone;
 
 
     public Contact(String id, String name, String email, String phone) {
@@ -11,9 +14,7 @@ public class Contact {
         this.phone = phone;
     }
 
-    private String name;
-    private String email;
-    private String phone;
+
 
     public Contact(String name, String email, String phone) {
         this.name = name;

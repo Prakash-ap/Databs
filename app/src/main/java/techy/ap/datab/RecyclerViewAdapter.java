@@ -1,6 +1,7 @@
 package techy.ap.datab;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,7 +14,7 @@ import java.util.ArrayList;
 import java.util.zip.Inflater;
 
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.MyViewHolder> {
-    private ArrayList<Contact>contacts;
+    public ArrayList<Contact>contacts;
     private Context context;
 
     public RecyclerViewAdapter(ArrayList<Contact> contacts, Context context) {
@@ -49,12 +50,22 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         ImageView image;
         TextView name,email,phone;
-        public MyViewHolder(@NonNull View itemView) {
+        public MyViewHolder(@NonNull final View itemView) {
             super(itemView);
             image=(ImageView)itemView.findViewById(R.id.image);
             name=(TextView)itemView.findViewById(R.id.name1);
             email=(TextView)itemView.findViewById(R.id.email1);
             phone=(TextView)itemView.findViewById(R.id.phone1);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    Intent intent=new Intent(context,MainActivity.class);
+                    context.startActivity(intent);
+
+                }
+            });
 
         }
     }
