@@ -22,6 +22,8 @@ public class Secondphase extends AppCompatActivity {
     private RecyclerView.ViewHolder currentItemViewHolder = null;
 
 
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +41,8 @@ public class Secondphase extends AppCompatActivity {
             }
         });
 
+      //  setData();
+
 
         recyclerViewAdapter=new RecyclerViewAdapter(contactArrayList,this);
 
@@ -47,6 +51,7 @@ public class Secondphase extends AppCompatActivity {
 
         recyclerView.setItemAnimator(new DefaultItemAnimator());
         recyclerView.setAdapter(recyclerViewAdapter);
+        recyclerViewAdapter.notifyDataSetChanged();
 
         db=new DatabaseHandler(this);
 
@@ -54,6 +59,7 @@ public class Secondphase extends AppCompatActivity {
             @Override
             public void onRightClicked(int position) {
                 recyclerViewAdapter.contacts.remove(position);
+               // db.deletedata(contact);
                 recyclerViewAdapter.notifyItemRemoved(position);
                 recyclerViewAdapter.notifyItemRangeChanged(position, recyclerViewAdapter.getItemCount());
             }
@@ -71,6 +77,8 @@ public class Secondphase extends AppCompatActivity {
 
 
     }
+
+
 
     private ArrayList<Contact> getData() {
 
