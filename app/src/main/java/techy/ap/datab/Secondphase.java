@@ -33,13 +33,13 @@ public class Secondphase extends AppCompatActivity {
 
         recyclerView=(RecyclerView)findViewById(R.id.recycleview);
 
-        recyclerView.addItemDecoration(new RecyclerView.ItemDecoration() {
+      /*  recyclerView.addItemDecoration(new RecyclerView.ItemDecoration() {
             @Override
             public void onDraw(@NonNull Canvas c, @NonNull RecyclerView parent, @NonNull RecyclerView.State state) {
                 super.onDraw(c, parent, state);
                 swipeController.onDraw(c);
             }
-        });
+        });*/
 
       //  setData();
 
@@ -55,7 +55,7 @@ public class Secondphase extends AppCompatActivity {
 
         db=new DatabaseHandler(this);
 
-        swipeController = new SwipeController(new SwipeControllerActions() {
+      /*  swipeController = new SwipeController(new SwipeControllerActions() {
             @Override
             public void onRightClicked(int position) {
                 recyclerViewAdapter.contacts.remove(position);
@@ -72,7 +72,7 @@ public class Secondphase extends AppCompatActivity {
             public void onDraw(Canvas c, RecyclerView parent, RecyclerView.State state) {
                 swipeController.onDraw(c);
             }
-        });
+        });*/
 
 
 

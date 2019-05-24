@@ -2,9 +2,11 @@ package techy.ap.datab;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Build;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -26,6 +28,8 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     private String name,email,phone;
     private static final String TAG="RecyclerAdapter";
     ItemClickListener itemClickListener;
+
+
 
 
     public RecyclerViewAdapter(ArrayList<Contact> contacts, Context context) {
@@ -50,15 +54,31 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
       // myViewHolder.image.setImageDrawable(R.drawable.image);
 
         myViewHolder.setOnItemClickListener(new ItemClickListener() {
+            @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
             @Override
             public void onItemclick(View v, int pos) {
 
-                AlertDialog.Builder alertDialog=new AlertDialog.Builder(context);
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                    alertDialog.setView(R.layout.dialog_layout);
-                    alertDialog.setTitle("Update Now");
+              /*  AlertDialog.Builder alertDialog=new AlertDialog.Builder(context);
 
-                }
+                alertDialog.setTitle("Update info");
+                alertDialog.setView(R.layout.dialog);
+                alertDialog.setCancelable(false);
+
+                alertDialog.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                alertDialog.setPositiveButton("Update", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+
+                        db.updatedata(contact);
+                    }
+                });
+*/
 
 
                 //  View view=LayoutInflater.from(context).inflate(R.layout.dialog_layout,v)
@@ -107,12 +127,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     }*/
 
-    private void updateData() {
+   /* private void updateData() {
         name=etname.getText().toString().trim();
         email=etemail.getText().toString().trim();
 
     }
-
+*/
 
     @Override
     public int getItemCount() {
